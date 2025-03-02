@@ -59,6 +59,8 @@ dependencies {
 
 
     implementation("com.google.maps.android:maps-compose:6.4.1")
+    implementation ("com.google.accompanist:accompanist-permissions:0.37.2")
+    implementation ("com.google.android.gms:play-services-location:21.3.0")
 
     // AIzaSyDXJNhJI9Qtfgap9aozUd8-oZ2bg5ky1h8
 }
