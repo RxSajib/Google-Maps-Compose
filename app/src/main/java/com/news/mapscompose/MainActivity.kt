@@ -46,6 +46,7 @@ import com.google.maps.android.compose.GoogleMap
 import com.google.maps.android.compose.MapProperties
 import com.google.maps.android.compose.MapType
 import com.google.maps.android.compose.MapUiSettings
+import com.google.maps.android.compose.Polygon
 import com.google.maps.android.compose.rememberCameraPositionState
 import com.news.mapscompose.ui.theme.MapsComposeTheme
 import kotlinx.coroutines.launch
@@ -153,6 +154,13 @@ fun Home(modifier: Modifier = Modifier) {
     ) { innderPadding ->
         Box(modifier = Modifier.padding(innderPadding)){
 
+            val singaporeBounds = listOf(
+                LatLng(1.290270, 103.851959), // Singapore Center
+                LatLng(1.350270, 103.851959), // North
+                LatLng(1.290270, 103.931959), // East
+                LatLng(1.230270, 103.851959), // South
+                LatLng(1.290270, 103.771959)  // West
+            ) //todo set poligon
 
 
             val uisetting = MapUiSettings(  //todo ui for map kits
@@ -174,7 +182,7 @@ fun Home(modifier: Modifier = Modifier) {
                 ),*/
                 mapType = MapType.NORMAL,
                 isIndoorEnabled = true,
-                isMyLocationEnabled = true //todo my location enable
+                isMyLocationEnabled = locationPermission.allPermissionsGranted //todo my location enable
             )
 
 
@@ -184,7 +192,10 @@ fun Home(modifier: Modifier = Modifier) {
                 properties = mapProperties,
                 uiSettings = uisetting
             ){
-
+                Polygon(
+                    points = singaporeBounds,
+                    strokeWidth = 0.5f
+                )
             }
 
 
